@@ -1,14 +1,16 @@
+
 #!/bin/bash
 
 source ./common.sh
 
+
 check_root
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGS_FILE
-VALIDATE $? "coping mongo repo"
+cp mongo.repo /etc/yum.repos.d/mongo.repo
+VALIDATE $? "Copying Mongo Repo" 
 
-dnf install mongodb-org -y &>> $LOGS_FILE
-VALIDATE $? "Installing mongdb server
+dnf install mongodb-org -y &>>$LOGS_FILE
+VALIDATE $? "Installing MongoDB server"
 
 systemctl enable mongod &>>$LOGS_FILE
 VALIDATE $? "Enable MongoDB"
